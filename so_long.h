@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 16:59:01 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/15 18:01:57 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_game
 {
     void    *mlx;
     void    *window;
+    void    *img_1x1;
     void    *img_wall;
     void    *img_player_up;
     void    *img_player_down;

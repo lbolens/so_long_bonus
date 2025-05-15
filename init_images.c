@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:28:48 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 12:27:20 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/15 18:02:31 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void    init_images(t_game *game)
     game->img_player_left = NULL;
     game->img_player_right = NULL;
     game->img_exit = NULL;
+    game->img_1x1 = mlx_xpm_file_to_image(game->mlx, "textures/tuile_1x1.xpm", &w, &h);
     game->img_wall = mlx_xpm_file_to_image(game->mlx, "textures/test_wall.xpm", &w, &h);
     game->img_collectible = mlx_xpm_file_to_image(game->mlx, "textures/test_collectible.xpm", &w, &h);
     game->img_floor = mlx_xpm_file_to_image(game->mlx, "textures/test_floor.xpm", &w, &h);

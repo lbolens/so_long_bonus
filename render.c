@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:41:41 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 17:02:32 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/15 18:03:14 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,12 @@ void render_map(t_game *game, int i, int j)
             mlx_put_image_to_window(game->mlx, game->window, game->img_floor, j * TILE_SIZE, i * TILE_SIZE);
 
             if (map[i][j] == '1')
-                mlx_put_image_to_window(game->mlx, game->window, game->img_wall, j * TILE_SIZE, i * TILE_SIZE);
+            {
+                if (i == 0 && j == 0)
+                    mlx_put_image_to_window(game->mlx, game->window, game->img_1x1, j * TILE_SIZE, i * TILE_SIZE);
+                else
+                    mlx_put_image_to_window(game->mlx, game->window, game->img_wall, j * TILE_SIZE, i * TILE_SIZE);
+            }
             else if (map[i][j] == 'C')
                 mlx_put_image_to_window(game->mlx, game->window, game->img_collectible, j * TILE_SIZE, i * TILE_SIZE);
             else if (map[i][j] == 'E')
