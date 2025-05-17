@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:06:34 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 13:32:40 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 16:41:32 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,4 +213,48 @@ char	*ft_itoa(int n)
 	s = ft_putnbr(n, s, size, &i);
 	s[size] = '\0';
 	return (s);
+}
+
+int	exit_y(t_game *game)
+{
+	char** map;
+	int	i;
+	int	j;
+
+	map = game->map.map;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'E')
+				return (i);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	exit_x(t_game *game)
+{
+	char** map;
+	int	i;
+	int	j;
+
+	map = game->map.map;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'E')
+				return (j);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

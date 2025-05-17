@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:53:40 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 13:27:16 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 16:34:06 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,5 @@ int key_handler(int keycode, t_game *game)
     map[new_y][new_x] = 'P';
     game->player.moves++;
     printf("Moves: %d\n", game->player.moves);
-    render_map(game, 0, 0);
     return (0);
 }

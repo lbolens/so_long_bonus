@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 14:17:12 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 16:52:47 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,5 +145,7 @@ void init_seed_from_map(t_game *game);
 int my_rand_mod(int mod);
 void	update_asteroids(t_game *game);
 void init_asteroid(t_game *game);
+int	exit_x(t_game *game);
+int	exit_y(t_game *game);
 
 #endif
