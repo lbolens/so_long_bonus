@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+         #
+#    By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 12:28:32 by lbolens           #+#    #+#              #
-#    Updated: 2025/05/15 17:09:23 by lbolens          ###   ########.fr        #
+#    Updated: 2025/05/17 13:33:30 by lbolens          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC = game.c \
 	  movements.c \
 	  parsing.c \
 	  render.c \
-	  utils.c
+	  utils.c \
+	  destroy.c
 
 OBJ := $(SRC:%.c=%.o)
 
@@ -61,7 +62,8 @@ $(NAME): $(OBJ)
                                                                                                                                         
 	@make -C mlx --no-print-directory > /dev/null 2>&1
 	@echo ""
-	@$(CC) $(CCFLAGS) $^ -Lmlx -lmlx -lXext -lX11 -lm -o $@
+	# @$(CC) $(CCFLAGS) $^ -Lmlx -lmlx -lXext -lX11 -lm -o $@
+	@$(CC) $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
 	@echo "✅ Build complete"
 
 %.o: %.c

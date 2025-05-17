@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:06:34 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 17:09:12 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 13:32:40 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,38 +95,6 @@ void	free_map(char **map)
 	while (map[i])
 		free(map[i++]);
 	free(map);
-}
-
-void	destroy_game(t_game *game)
-{
-	if (!game)
-		return ;
-	if (game->map)
-		free_map(game->map);
-	if (game->mlx && game->img_floor)
-		mlx_destroy_image(game->mlx, game->img_floor);
-	if (game->mlx && game->img_wall)
-		mlx_destroy_image(game->mlx, game->img_wall);
-	if (game->mlx && game->img_collectible)
-		mlx_destroy_image(game->mlx, game->img_collectible);
-	if (game->mlx && game->img_exit)
-		mlx_destroy_image(game->mlx, game->img_exit);
-	if (game->mlx && game->img_player_up)
-		mlx_destroy_image(game->mlx, game->img_player_up);
-	if (game->mlx && game->img_player_down)
-		mlx_destroy_image(game->mlx, game->img_player_down);
-	if (game->mlx && game->img_player_left)
-		mlx_destroy_image(game->mlx, game->img_player_left);
-	if (game->mlx && game->img_player_right)
-		mlx_destroy_image(game->mlx, game->img_player_right);
-	if (game->mlx && game->window)
-		mlx_destroy_window(game->mlx, game->window);
-	if (game->mlx)
-	{
-		mlx_destroy_display(game->mlx);
-		free(game->mlx);
-	}
-	free(game);
 }
 
 void	find_player_position(char **map, int *player_x, int *player_y)

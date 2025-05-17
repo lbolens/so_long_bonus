@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:02:54 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 14:41:13 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 13:09:34 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 static void    doing_it(t_game *game, int* width_px, int* heigth_px)
 {
-    *width_px = number_columns(game->map[0]) * TILE_SIZE;
-    *heigth_px = number_lines(game->map) * TILE_SIZE;
-    init_game(game, game->map);
+    *width_px = number_columns(game->map.map[0]) * TILE_SIZE;
+    *heigth_px = number_lines(game->map.map) * TILE_SIZE;
+    init_game(game, game->map.map);
     game->window = mlx_new_window(game->mlx, *width_px, *heigth_px, "so_long");
     if (!game->window)
     {
@@ -47,8 +47,8 @@ int main(int argc, char **argv)
     game = malloc(sizeof(t_game));
     if (!game)
         return (1);
-    game->map = is_map_valid(argv[1], 0, 0);
-    if (!game->map)
+    game->map.map = is_map_valid(argv[1], 0, 0);
+    if (!game->map.map)
     {
         printf("Error : invalid map\n");
         free(game);

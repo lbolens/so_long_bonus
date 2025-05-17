@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 18:01:57 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 13:58:14 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #   define TILE_SIZE 64
 #  endif
 
+/* Sur Linux
 # define KEY_W     119
 # define KEY_A     97
 # define KEY_S     115
@@ -30,6 +31,19 @@
 # define KEY_DOWN   65364
 # define KEY_LEFT   65361
 # define KEY_RIGHT  65363
+*/
+
+/*Sur Mac*/ 
+# define KEY_W     13
+# define KEY_A     0
+# define KEY_S     1
+# define KEY_D     2
+# define KEY_ESC   53
+# define KEY_UP    126
+# define KEY_DOWN  125
+# define KEY_LEFT  123
+# define KEY_RIGHT 124
+# define KEY_SPACE 49
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -42,29 +56,49 @@ typedef struct s_node
     struct s_node   *next;
 }                   t_nod;
 
+typedef struct s_images {
+	void *img_1x1;
+	void *img_wall;
+	void *img_player_up;
+	void *img_player_down;
+	void *img_player_left;
+	void *img_player_right;
+	void *img_collectible;
+	void *img_exit;
+	void *img_floor;
+} t_images;
+
+typedef struct s_player {
+	int x;
+	int y;
+	int last_x;
+	int last_y;
+	int moves;
+	int collected;
+} t_player;
+
+typedef struct s_map {
+	char **map;
+	int map_width;
+	int map_height;
+	int total_collectibles;
+} t_map;
+
+typedef struct s_asteroid {
+    int x;
+    int y;
+    int direction;
+    struct s_asteroid *next;
+}   t_asteroid;
+
 typedef struct s_game
 {
     void    *mlx;
     void    *window;
-    void    *img_1x1;
-    void    *img_wall;
-    void    *img_player_up;
-    void    *img_player_down;
-    void    *img_player_left;
-    void    *img_player_right;
-    void    *img_collectible;
-    void    *img_exit;
-    void    *img_floor;
-    char    **map;
-    int     map_height;
-    int     map_width;
-    int     last_x;
-    int     last_y;
-    int     player_x;
-    int     player_y;
-    int     total_collectibles;
-    int     collected;
-    int     moves;
+    t_images images;
+    t_map map;
+    t_player player;
+    t_asteroid *asteroid;
 }                   t_game;
 
 /*--------GET_NEXT_LINE--------*/
