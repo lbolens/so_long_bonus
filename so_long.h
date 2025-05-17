@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 13:58:14 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 14:17:12 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_images {
 	void *img_collectible;
 	void *img_exit;
 	void *img_floor;
+    void *img_asteroid;
 } t_images;
 
 typedef struct s_player {
@@ -137,5 +138,12 @@ void    find_player_position(char** map, int* player_x, int* player_y);
 char	*ft_itoa(int n);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen_2(const char *str);
+
+int game_loop(t_game *game);
+void	render_asteroids(t_game *game);
+void init_seed_from_map(t_game *game);
+int my_rand_mod(int mod);
+void	update_asteroids(t_game *game);
+void init_asteroid(t_game *game);
 
 #endif

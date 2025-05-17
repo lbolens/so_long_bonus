@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:32:27 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 13:33:19 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 14:33:36 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static void	destroy_images_map(t_game *game)
 		mlx_destroy_image(game->mlx, game->images.img_collectible);
 	if (game->mlx && game->images.img_exit)
 		mlx_destroy_image(game->mlx, game->images.img_exit);
+	if (game->mlx && game->images.img_asteroid)
+		mlx_destroy_image(game->mlx, game->images.img_asteroid);
 }
 
 static void	destroy_images_player(t_game *game)
@@ -40,8 +42,21 @@ static void	destroy_images_player(t_game *game)
 }
 void	destroy_game(t_game *game)
 {
+	t_asteroid *current;
+	t_asteroid *next;
+
 	if (!game)
 		return ;
+		
+	// Libération de la liste d'astéroïdes
+	current = game->asteroid;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	
 	destroy_images_map(game);
 	destroy_images_player(game);
 	if (game->mlx && game->window)

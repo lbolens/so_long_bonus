@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:02:54 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 13:09:34 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 14:05:35 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void    doing_it(t_game *game, int* width_px, int* heigth_px)
     render_map(game, 0, 0);
     mlx_key_hook(game->window, key_handler, game);
     mlx_hook(game->window, 17, 0, close_game, game);
+    mlx_loop_hook(game->mlx, game_loop, game);
     mlx_loop(game->mlx);
     destroy_game(game);
 }

@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:28:48 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 13:23:19 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 14:34:21 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ static void init_map_images(t_game *game)
     game->images.img_floor = NULL;
     game->images.img_exit = NULL;
     game->images.img_1x1 = NULL;
+    game->images.img_asteroid = NULL; // Initialisation à NULL
     game->images.img_1x1 = mlx_xpm_file_to_image(game->mlx, "textures/tuile_1x1.xpm", &w, &h);
     game->images.img_wall = mlx_xpm_file_to_image(game->mlx, "textures/test_wall.xpm", &w, &h);
     game->images.img_collectible = mlx_xpm_file_to_image(game->mlx, "textures/test_collectible.xpm", &w, &h);
     game->images.img_floor = mlx_xpm_file_to_image(game->mlx, "textures/test_floor.xpm", &w, &h);
     game->images.img_exit = mlx_xpm_file_to_image(game->mlx, "textures/test_exit.xpm", &w, &h);
-    if (!game->images.img_wall || !game->images.img_collectible || !game->images.img_floor || !game->images.img_exit)
+    game->images.img_asteroid = mlx_xpm_file_to_image(game->mlx, "textures/tuile_asteroid.xpm", &w, &h);
+    if (!game->images.img_wall || !game->images.img_collectible || !game->images.img_floor || !game->images.img_exit || !game->images.img_asteroid)
     {
         printf("Error: Failed to load images. Please check if all image files exist in the textures directory.\n");
         destroy_game(game);

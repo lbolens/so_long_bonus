@@ -6,7 +6,7 @@
 #    By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 12:28:32 by lbolens           #+#    #+#              #
-#    Updated: 2025/05/17 13:33:30 by lbolens          ###   ########.fr        #
+#    Updated: 2025/05/17 14:17:27 by lbolens          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC = game.c \
 	  parsing.c \
 	  render.c \
 	  utils.c \
-	  destroy.c
+	  destroy.c \
+	  init_asteroids.c
 
 OBJ := $(SRC:%.c=%.o)
 
