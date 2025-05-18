@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:32:27 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 14:33:36 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/17 17:21:31 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	destroy_game(t_game *game)
 
 	if (!game)
 		return ;
-		
-	// Libération de la liste d'astéroïdes
 	current = game->asteroid;
 	while (current)
 	{

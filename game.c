@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:59:07 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 14:32:40 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/18 12:26:31 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    init_game(t_game *game, char** map)
     game->map.total_collectibles = number_collectibles(map);
     game->player.collected = 0;
     game->player.moves = 0;
-    game->asteroid = NULL; // Initialisation de la liste d'astéroïdes à NULL
+    game->asteroid = NULL;
     game->mlx = mlx_init();
     if (!game->mlx)
     {
@@ -33,7 +33,7 @@ void    init_game(t_game *game, char** map)
         exit(1);
     }
     init_images(game);
-    init_seed_from_map(game); // Initialisation de la graine aléatoire
+    init_seed_from_map(game);
 }
 
 int game_loop(t_game *game)
@@ -42,13 +42,10 @@ int game_loop(t_game *game)
 
 	frame++;
 
-	if (frame % 60 == 0) // toutes les ~1 seconde
+	if (frame % 20 == 0)
 		init_asteroid(game);
-
 	update_asteroids(game);
-
-	render_map(game, 0, 0);          // ta map
-	render_asteroids(game);    // les astéroïdes en plus
-
+	render_map(game, 0, 0);
+	render_asteroids(game);
 	return (0);
 }
