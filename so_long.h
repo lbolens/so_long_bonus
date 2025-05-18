@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 16:52:47 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/18 13:44:25 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define KEY_S     1
 # define KEY_D     2
 # define KEY_ESC   53
+# define KEY_ENTER 36
 # define KEY_UP    126
 # define KEY_DOWN  125
 # define KEY_LEFT  123
@@ -67,6 +68,8 @@ typedef struct s_images {
 	void *img_exit;
 	void *img_floor;
     void *img_asteroid;
+    void *img_victory;
+    void *img_game_over;
 } t_images;
 
 typedef struct s_player {
@@ -147,5 +150,8 @@ void	update_asteroids(t_game *game);
 void init_asteroid(t_game *game);
 int	exit_x(t_game *game);
 int	exit_y(t_game *game);
+
+void    doing_it(t_game *game, int* width_px, int* heigth_px);
+int     manage_victory_and_game_over(int keycode, t_game *game);
 
 #endif

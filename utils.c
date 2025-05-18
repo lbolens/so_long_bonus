@@ -6,12 +6,14 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 11:06:34 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 16:41:32 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/18 17:09:04 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "so_long.h"
+
+static unsigned int seed;
 
 int	number_lines(char **map)
 {
@@ -257,4 +259,17 @@ int	exit_x(t_game *game)
 		i++;
 	}
 	return (0);
+}
+
+void init_seed_from_map(t_game *game)
+{
+	seed = game->map.map[0][0] * 31
+	      + game->player.x * 17
+	      + game->player.y * 13;
+}
+
+int my_rand_mod(int mod)
+{
+	seed = seed * 1103515245 + 12345;
+	return (seed / 65536) % mod;
 }

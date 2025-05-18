@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:59:07 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/18 12:26:31 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/18 13:27:14 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int game_loop(t_game *game)
 
 	frame++;
 
-	if (frame % 20 == 0)
+	if (frame % 40 == 0)
 		init_asteroid(game);
 	update_asteroids(game);
 	render_map(game, 0, 0);

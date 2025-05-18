@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:02:54 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 14:05:35 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/18 13:31:43 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "mlx.h"
 
 
-static void    doing_it(t_game *game, int* width_px, int* heigth_px)
+void    doing_it(t_game *game, int* width_px, int* heigth_px)
 {
     *width_px = number_columns(game->map.map[0]) * TILE_SIZE;
     *heigth_px = number_lines(game->map.map) * TILE_SIZE;
