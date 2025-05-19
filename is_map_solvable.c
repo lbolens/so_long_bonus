@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:52:38 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 13:26:01 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/19 10:27:58 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,12 +138,9 @@ static int count_collectibles(char** map)
     return (count);
 }
 
-int is_map_solvable(char** map)
+int is_map_solvable(char** map, int player_x, int player_y, int map_height)
 {
     char** map_copy;
-    int player_x;
-    int player_y;
-    int map_height;
     int has_collectibles;
 
     if (!map)
@@ -152,9 +149,6 @@ int is_map_solvable(char** map)
     map_copy = map_duplicate(map, 0, 0, number_lines(map));
     if (!map_copy)
         return (0);   
-    map_height = number_lines(map_copy);
-    player_x = -1;
-    player_y = -1;
     find_player_position(map_copy, &player_x, &player_y);
     if (player_x >= 0 && player_y >= 0)
     {

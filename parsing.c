@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 14:23:29 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 15:47:05 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/19 10:26:58 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char** is_map_valid(char *filepath, int fd, int i)
     }   
     map[i] = NULL;
     close(fd);
-    if (is_rectangle(map) == 0 || check_synthax(map, 0, 0, 0) == 0 || (is_walls(map, 0, number_lines(map), number_columns(map[0])) == 0) || is_map_solvable(map) == 0)
+    if (is_rectangle(map) == 0 || check_synthax(map, 0, 0, 0) == 0 || (is_walls(map, 0, number_lines(map), number_columns(map[0])) == 0) || (is_map_solvable(map, -1, -1, number_lines(map)) == 0))
     {
         free_map(map);
         return (NULL);

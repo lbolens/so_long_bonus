@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/18 13:44:25 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/19 10:27:31 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ t_nod		*ft_create_new_stash(char *content, int index);
 t_nod		*add_to_stash(t_nod *stash, char *buffer);
 
 /*--------PARSING--------*/
-int is_map_solvable(char** map);
+int is_map_solvable(char** map, int player_x, int player_y, int map_height);
 int is_rectangle(char** map);
 int check_synthax(char** map, int nbr_p, int nbr_c, int nbr_e);
 int is_walls(char** map, int i, int nbr_lines, int nbr_columns);
