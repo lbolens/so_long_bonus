@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 15:02:50 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 10:04:12 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/26 15:52:49 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int check_synthax(char** map, int nbr_p, int nbr_c, int nbr_e)
         j = 0;
         while (map[i][j])
         {
-            if (map[i][j] != '1' && map[i][j] != '0' &&
-                 map[i][j] != 'P' && map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != '\n')
+            if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'P' 
+                && map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != '\n')
                 return (0);
             if (map[i][j] == 'P')
                 nbr_p++;
