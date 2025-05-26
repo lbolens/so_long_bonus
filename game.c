@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
+/*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:59:07 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/19 10:21:12 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/26 11:26:47 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int game_loop(t_game *game)
 
 	frame++;
 
-	if (frame % 40 == 0)
+	if (frame % 300 == 0)
 		init_asteroid(game);
-	update_asteroids(game);
+	update_asteroids(game, NULL, NULL);
 	render_map(game, 0, 0);
 	render_asteroids(game);
 	return (0);

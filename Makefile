@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+         #
+#    By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 12:28:32 by lbolens           #+#    #+#              #
-#    Updated: 2025/05/17 14:17:27 by lbolens          ###   ########.fr        #
+#    Updated: 2025/05/19 10:49:16 by lbolens          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,14 @@ SRC = game.c \
 OBJ := $(SRC:%.c=%.o)
 
 CC = gcc
-CCFLAGS = -Wall -Wextra -Werror -Imlx -I.
+CCFLAGS = -Wall -Wextra -Werror -Imlx
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Darwin)
+	MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+else
+	MLX_FLAGS = -Lmlx -lmlx -lXext -lX11 -lm
+endif
 
 TOTAL := $(words $(SRC))
 COUNT = 0
@@ -63,8 +70,7 @@ $(NAME): $(OBJ)
                                                                                                                                         
 	@make -C mlx --no-print-directory > /dev/null 2>&1
 	@echo ""
-	# @$(CC) $(CCFLAGS) $^ -Lmlx -lmlx -lXext -lX11 -lm -o $@
-	@$(CC) $(CCFLAGS) $^ -Lmlx -lmlx -framework OpenGL -framework AppKit -o $@
+	@$(CC) $(CCFLAGS) $^ $(MLX_FLAGS) -o $@
 	@echo "✅ Build complete"
 
 %.o: %.c

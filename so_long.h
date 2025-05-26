@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
+/*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/19 10:27:31 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/26 11:27:22 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # endif
 
 #  ifndef TILE_SIZE
-#   define TILE_SIZE 64
+#   define TILE_SIZE 128
 #  endif
 
-/* Sur Linux
+/* Sur Linux*/
 # define KEY_W     119
 # define KEY_A     97
 # define KEY_S     115
@@ -31,9 +31,8 @@
 # define KEY_DOWN   65364
 # define KEY_LEFT   65361
 # define KEY_RIGHT  65363
-*/
 
-/*Sur Mac*/ 
+/*Sur Mac
 # define KEY_W     13
 # define KEY_A     0
 # define KEY_S     1
@@ -45,6 +44,7 @@
 # define KEY_LEFT  123
 # define KEY_RIGHT 124
 # define KEY_SPACE 49
+*/
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -146,7 +146,7 @@ int game_loop(t_game *game);
 void	render_asteroids(t_game *game);
 void init_seed_from_map(t_game *game);
 int my_rand_mod(int mod);
-void	update_asteroids(t_game *game);
+void	update_asteroids(t_game *game, t_asteroid *curr, t_asteroid *prev);
 void init_asteroid(t_game *game);
 int	exit_x(t_game *game);
 int	exit_y(t_game *game);

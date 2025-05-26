@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbolens <lbolens@student.s19.be>           +#+  +:+       +#+        */
+/*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:32:27 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/17 17:21:31 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/19 11:06:16 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	destroy_images_map(t_game *game)
 		mlx_destroy_image(game->mlx, game->images.img_exit);
 	if (game->mlx && game->images.img_asteroid)
 		mlx_destroy_image(game->mlx, game->images.img_asteroid);
+	if (game->mlx && game->images.img_1x1)
+        mlx_destroy_image(game->mlx, game->images.img_1x1);
 }
 
 static void	destroy_images_player(t_game *game)
@@ -62,7 +64,7 @@ void	destroy_game(t_game *game)
 	if (game->mlx)
 	{
 		//Linux
-		//mlx_destroy_display(game->mlx);
+		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}
 	free(game);
