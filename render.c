@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:09:17 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 14:42:28 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:08:39 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,44 @@ static void render_P(t_game *game, int i, int j)
 static void manage_movements(t_game *game, int i, int j)
 {
     char *moves;
+    int middle;
 
     moves = ft_itoa(game->player.moves);
+    middle = number_columns(game->map.map[i]) / 2;
+    
     if (ft_strlen_2(moves) == 1)
-        manage_units_for_units(game, moves, i, j);
+    {
+        if (j == middle + 1)
+            manage_units_for_units(game, moves, i, j);
+    }
     else if (ft_strlen_2(moves) == 2)
     {
-        manage_tens_for_tens(game, moves, i, j);
-        manage_units_for_tens(game, moves, i, j);
+        if (j == middle + 1)
+            manage_tens_for_tens(game, moves, i, j);
+        else if (j == middle + 2)
+            manage_units_for_tens(game, moves, i, j);
     }
     else if (ft_strlen_2(moves) == 3)
     {
-        manage_hundreds_for_hundreds(game, moves, i, j);
-        manage_tens_for_hundreds(game, moves, i, j);
-        manage_units_for_hundreds(game, moves, i, j);
+        if (j == middle + 1)
+            manage_hundreds_for_hundreds(game, moves, i, j);
+        else if (j == middle + 2)
+            manage_tens_for_hundreds(game, moves, i, j);
+        else if (j == middle + 3)
+            manage_units_for_hundreds(game, moves, i, j);
     }
     else if (ft_strlen_2(moves) == 4)
     {
-        manage_thousands_for_thousands(game, moves, i, j);
-        manage_hundreds_for_thousands(game, moves, i, j);
-        manage_tens_for_thousands(game, moves, i, j);
-        manage_units_for_thousands(game, moves, i, j);
+        if (j == middle + 1)
+            manage_thousands_for_thousands(game, moves, i, j);
+        else if (j == middle + 2)
+            manage_hundreds_for_thousands(game, moves, i, j);
+        else if (j == middle + 3)
+            manage_tens_for_thousands(game, moves, i, j);
+        else if (j == middle + 4)
+            manage_units_for_thousands(game, moves, i, j);
     }
-    else
-        return ;
+    free(moves);
 }
 
 static void render_1(t_game *game, int i, int j)
@@ -77,7 +91,7 @@ static void render_1(t_game *game, int i, int j)
             mlx_put_image_to_window(game->mlx, game->window, game->images.img_m, j * TILE_SIZE, i * TILE_SIZE);
         else if (j == middle)
             mlx_put_image_to_window(game->mlx, game->window, game->images.img_points, j * TILE_SIZE, i * TILE_SIZE);
-        else if ((j == middle + 1 || j == middle + 2 ||j == middle + 3 || j == middle + 4))
+        else if ((j == middle + 1 || j == middle + 2 || j == middle + 3 || j == middle + 4))
             manage_movements(game, i, j);
         else
             mlx_put_image_to_window(game->mlx, game->window, game->images.img_1x1, j * TILE_SIZE, i * TILE_SIZE);
@@ -85,6 +99,7 @@ static void render_1(t_game *game, int i, int j)
     else
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_wall, j * TILE_SIZE, i * TILE_SIZE);
 }
+
 static void doing_render(t_game *game, char **map, int i, int j)
 {
     i = 0;
@@ -111,22 +126,8 @@ static void doing_render(t_game *game, char **map, int i, int j)
 
 void render_map(t_game *game, int i, int j)
 {
-    char *move_str;
-    char *display;
     char **map;
     
     map = game->map.map;
-    move_str = ft_itoa(game->player.moves);
-    if (!move_str)
-        return;
-    display = ft_strjoin("Moves: ", move_str);
-    if (!display)
-    {
-        free(move_str);
-        return;
-    }
     doing_render(game, map, i, j);
-    //mlx_string_put(game->mlx, game->window, 0, 0, 0xFFFFFF, display);
-    free(move_str);
-    free(display);
 }

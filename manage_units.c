@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 14:21:41 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 14:44:32 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:07:52 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void manage_units_for_units(t_game *game, char *moves, int i, int j)
 
 void manage_thousands_for_thousands(t_game *game, char *moves, int i, int j)
 {
-    if (moves[0] == 0)
+    if (moves[0] == '0')
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_0, j * TILE_SIZE, i * TILE_SIZE);
     else if (moves[0] == '1')
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_1, j * TILE_SIZE, i * TILE_SIZE);
@@ -59,7 +59,6 @@ void manage_thousands_for_thousands(t_game *game, char *moves, int i, int j)
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_8, j * TILE_SIZE, i * TILE_SIZE);
     else if (moves[0] == '9')
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_9, j * TILE_SIZE, i * TILE_SIZE);
-        
 }
 
 void manage_hundreds_for_thousands(t_game *game, char *moves, int i, int j)
@@ -84,7 +83,6 @@ void manage_hundreds_for_thousands(t_game *game, char *moves, int i, int j)
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_8, j * TILE_SIZE, i * TILE_SIZE);
     else if (moves[1] == '9')
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_9, j * TILE_SIZE, i * TILE_SIZE);
-        
 }
 
 void manage_tens_for_thousands(t_game *game, char *moves, int i, int j)
@@ -109,7 +107,6 @@ void manage_tens_for_thousands(t_game *game, char *moves, int i, int j)
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_8, j * TILE_SIZE, i * TILE_SIZE);
     else if (moves[2] == '9')
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_9, j * TILE_SIZE, i * TILE_SIZE);
-        
 }
 
 void manage_units_for_thousands(t_game *game, char *moves, int i, int j)
