@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 16:51:41 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 16:53:41 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,9 +195,9 @@ void					manage_units_for_tens(t_game *game, char *moves, int i,
 							int j);
 void					doing_render(t_game *game, char **map, int i, int j);
 int						ft_size(int num);
-void	init_digit_images_bis(t_game *game);
-int	check_all_collectibles(char **map);
-int	check_exit(char **map);
-int	count_collectibles(char **map);
+void					init_digit_images_bis(t_game *game);
+int						check_all_collectibles(char **map);
+int						check_exit(char **map);
+int						count_collectibles(char **map);
 
 #endif
