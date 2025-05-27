@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 11:42:39 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 14:24:33 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,16 @@ typedef struct s_images {
 	void *img_e;
 	void *img_s;
 	void *img_points;
+	void *img_0;
+	void *img_1;
+	void *img_2;
+	void *img_3;
+	void *img_4;
+	void *img_5;
+	void *img_6;
+	void *img_7;
+	void *img_8;
+	void *img_9;
 } t_images;
 
 typedef struct s_player {
@@ -159,5 +169,16 @@ int	exit_y(t_game *game);
 
 void    doing_it(t_game *game, int* width_px, int* heigth_px);
 int     manage_victory_and_game_over(int keycode, t_game *game);
+
+void manage_units_for_units(t_game *game, char *moves, int i, int j);
+void manage_hundreds_for_hundreds(t_game *game, char *moves, int i, int j);
+void manage_tens_for_hundreds(t_game *game, char *moves, int i, int j);
+void manage_units_for_hundreds(t_game *game, char *moves, int i, int j);
+void manage_thousands_for_thousands(t_game *game, char *moves, int i, int j);
+void manage_hundreds_for_thousands(t_game *game, char *moves, int i, int j);
+void manage_tens_for_thousands(t_game *game, char *moves, int i, int j);
+void manage_units_for_thousands(t_game *game, char *moves, int i, int j);
+void manage_tens_for_tens(t_game *game, char *moves, int i, int j);
+void manage_units_for_tens(t_game *game, char *moves, int i, int j);
 
 #endif

@@ -5,13 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/14 11:41:41 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 12:03:36 by lbolens          ###   ########.fr       */
+/*   Created: 2025/05/27 14:09:17 by lbolens           #+#    #+#             */
+/*   Updated: 2025/05/27 14:33:01 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "so_long.h"
-#include "mlx.h"
 
 #include "so_long.h"
 #include "mlx.h"
@@ -32,10 +29,34 @@ static void render_P(t_game *game, int i, int j)
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
 }
 
-/*static void manage_movements(t_game *game, int i, int j, int middle)
+static void manage_movements(t_game *game, int i, int j, int middle)
 {
-    
-}*/
+    char *moves;
+
+    moves = ft_itoa(game->player.moves);
+    if (ft_strlen_2(moves) == 1)
+        manage_unit(game, moves, i, j);
+    else if (ft_strlen_2(moves) == 2)
+    {
+        manage_tens_for_tens(game, moves, i, j);
+        manage_units_for_tens(game, moves, i, j);
+    }
+    else if (ft_strlen_2(moves) == 3)
+    {
+        manage_hundreds_for_hundreds(game, moves, i, j);
+        manage_tens_for_hundreds(game, moves, i, j);
+        manage_units_for_hundreds(game, moves, i, j);
+    }
+    else if (ft_strlen_2(moves) == 4)
+    {
+        manage_thousands_for_hundreds(game, moves, i, j);
+        manage_hundreds_for_hundreds(game, moves, i, j);
+        manage_tens_for_thousands(game, moves, i, j);
+        manage_units_for_thousands(game, moves, i, j);
+    }
+    else
+        return ;
+}
 
 static void render_1(t_game *game, int i, int j)
 {
@@ -55,8 +76,7 @@ static void render_1(t_game *game, int i, int j)
         else if (j == middle - 5)
             mlx_put_image_to_window(game->mlx, game->window, game->images.img_m, j * TILE_SIZE, i * TILE_SIZE);
         else if ((j >= middle + 1) && (j <= middle + 5))
-            mlx_put_image_to_window(game->mlx, game->window, game->images.img_1x1, j * TILE_SIZE, i * TILE_SIZE);
-        //manage_movements(game, i, j, middle);
+            manage_movements(game, i, j, middle);
         else
             mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
     }

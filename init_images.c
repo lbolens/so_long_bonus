@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:28:48 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 11:47:42 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 13:40:01 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,43 @@ static void init_moves_images(t_game *game)
     }
 }
 
+static void init_digits_images(t_game *game)
+{
+    int w;
+    int h;
+
+    w = TILE_SIZE;
+    h = TILE_SIZE;
+    game->images.img_0 = NULL;
+    game->images.img_1 = NULL;
+    game->images.img_2 = NULL;
+    game->images.img_3 = NULL;
+    game->images.img_4 = NULL;
+    game->images.img_5 = NULL;
+    game->images.img_6 = NULL;
+    game->images.img_7 = NULL;
+    game->images.img_8 = NULL;
+    game->images.img_9 = NULL;
+    game->images.img_0 = mlx_xpm_file_to_image(game->mlx, "textures/img_0.xpm", &w, &h);
+    game->images.img_1 = mlx_xpm_file_to_image(game->mlx, "textures/img_1.xpm", &w, &h);
+    game->images.img_2 = mlx_xpm_file_to_image(game->mlx, "textures/img_2.xpm", &w, &h);
+    game->images.img_3 = mlx_xpm_file_to_image(game->mlx, "textures/img_3.xpm", &w, &h);
+    game->images.img_4 = mlx_xpm_file_to_image(game->mlx, "textures/img_4.xpm", &w, &h);
+    game->images.img_5 = mlx_xpm_file_to_image(game->mlx, "textures/img_5.xpm", &w, &h);
+    game->images.img_6 = mlx_xpm_file_to_image(game->mlx, "textures/img_6.xpm", &w, &h);
+    game->images.img_7 = mlx_xpm_file_to_image(game->mlx, "textures/img_7.xpm", &w, &h);
+    game->images.img_8 = mlx_xpm_file_to_image(game->mlx, "textures/img_8.xpm", &w, &h);
+    game->images.img_9 = mlx_xpm_file_to_image(game->mlx, "textures/img_9.xpm", &w, &h);
+    if (!game->images.img_1 || !game->images.img_2 || 
+        !game->images.img_3 || !game->images.img_4 || !game->images.img_5 || 
+        !game->images.img_6 || !game->images.img_7 || !game->images.img_8 || !game->images.img_9)
+    {
+        printf("Error: Failed to load digits_images.xpm\n");
+        destroy_game(game);
+        exit(1);
+    }
+}
+
 void init_images(t_game *game)
 {
     if (!game || !game->mlx)
@@ -99,4 +136,5 @@ void init_images(t_game *game)
     init_map_images(game, 0, 0);
     init_player_images(game);
     init_moves_images(game);
+    init_digits_images(game);
 }
