@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:41:41 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/26 16:25:00 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 11:10:35 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,38 @@ static void render_P(t_game *game, int i, int j)
     else
         mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
 }
+
+/*static void manage_movements(t_game *game, int i, int j, int middle)
+{
+    
+}*/
+
+static void render_1(t_game *game, int i, int j)
+{
+    int middle;
+    
+    middle = number_columns(game->map.map[i]) / 2;
+    if (i == 0)
+    {
+        if (i == middle - 1)
+            mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
+        else if (i == middle - 2)
+            mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
+        else if (i == middle - 3)
+            mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
+        else if (i == middle - 4)
+            mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
+        else if (i == middle - 5)
+            mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
+        else if ((i >= middle + 1) && (i <= middle + 5))
+            mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
+        //manage_movements(game, i, j, middle);
+        else
+            mlx_put_image_to_window(game->mlx, game->window, game->images.img_player_down, j * TILE_SIZE, i * TILE_SIZE);
+    }
+    else
+        mlx_put_image_to_window(game->mlx, game->window, game->images.img_wall, j * TILE_SIZE, i * TILE_SIZE);
+}
 static void doing_render(t_game *game, char **map, int i, int j)
 {
     i = 0;
@@ -40,12 +72,7 @@ static void doing_render(t_game *game, char **map, int i, int j)
         while (map[i][j])
         {
             if (map[i][j] == '1')
-            {
-                if (i == 0)
-                    mlx_put_image_to_window(game->mlx, game->window, game->images.img_1x1, j * TILE_SIZE, i * TILE_SIZE);
-                else
-                    mlx_put_image_to_window(game->mlx, game->window, game->images.img_wall, j * TILE_SIZE, i * TILE_SIZE);
-            }
+                render_1(game, i, j);
             else if (map[i][j] == '0')
                 mlx_put_image_to_window(game->mlx, game->window, game->images.img_floor, j * TILE_SIZE, i * TILE_SIZE);
             else if (map[i][j] == 'C')
