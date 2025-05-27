@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:28:48 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/26 11:34:48 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 11:47:42 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,39 @@ static void init_player_images(t_game *game)
     }
 }
 
+static void init_moves_images(t_game *game)
+{
+    int w;
+    int h;
+
+    w = TILE_SIZE;
+    h = TILE_SIZE;
+    game->images.img_m = NULL;
+    game->images.img_o = NULL;
+    game->images.img_v = NULL;
+    game->images.img_e = NULL;
+    game->images.img_s = NULL;
+    game->images.img_points = NULL;
+    game->images.img_m = mlx_xpm_file_to_image(game->mlx, "textures/img_m.xpm", &w, &h);
+    game->images.img_o = mlx_xpm_file_to_image(game->mlx, "textures/img_o.xpm", &w, &h);
+    game->images.img_v = mlx_xpm_file_to_image(game->mlx, "textures/img_v.xpm", &w, &h);
+    game->images.img_e = mlx_xpm_file_to_image(game->mlx, "textures/img_e.xpm", &w, &h);
+    game->images.img_s = mlx_xpm_file_to_image(game->mlx, "textures/img_s.xpm", &w, &h);
+    game->images.img_points = mlx_xpm_file_to_image(game->mlx, "textures/img_points.xpm", &w, &h);
+    if (!game->images.img_m || !game->images.img_o || 
+        !game->images.img_v || !game->images.img_e || !game->images.img_s || !game->images.img_points)
+    {
+        printf("Error: Failed to load moves_images.xpm\n");
+        destroy_game(game);
+        exit(1);
+    }
+}
+
 void init_images(t_game *game)
 {
     if (!game || !game->mlx)
         return;
     init_map_images(game, 0, 0);
     init_player_images(game);
+    init_moves_images(game);
 }

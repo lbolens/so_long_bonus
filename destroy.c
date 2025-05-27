@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:32:27 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/19 11:06:16 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 11:54:52 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,23 @@ static void	destroy_images_player(t_game *game)
 	if (game->mlx && game->images.img_player_right)
 		mlx_destroy_image(game->mlx, game->images.img_player_right);
 }
+
+static void destroy_moves_images(t_game *game)
+{
+	if (game->mlx && game->images.img_m)
+		mlx_destroy_image(game->mlx, game->images.img_m);
+	if (game->mlx && game->images.img_o)
+		mlx_destroy_image(game->mlx, game->images.img_o);
+	if (game->mlx && game->images.img_v)
+		mlx_destroy_image(game->mlx, game->images.img_v);
+	if (game->mlx && game->images.img_e)
+		mlx_destroy_image(game->mlx, game->images.img_e);
+	if (game->mlx && game->images.img_s)
+		mlx_destroy_image(game->mlx, game->images.img_s);
+	if (game->mlx && game->images.img_points)
+		mlx_destroy_image(game->mlx, game->images.img_points);
+}
+
 void	destroy_game(t_game *game)
 {
 	t_asteroid *current;
@@ -56,9 +73,9 @@ void	destroy_game(t_game *game)
 		free(current);
 		current = next;
 	}
-	
 	destroy_images_map(game);
 	destroy_images_player(game);
+	destroy_moves_images(game);
 	if (game->mlx && game->window)
 		mlx_destroy_window(game->mlx, game->window);
 	if (game->mlx)

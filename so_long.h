@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/26 16:05:21 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 11:42:39 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,12 @@ typedef struct s_images {
     void *img_asteroid;
     void *img_victory;
     void *img_game_over;
+	void *img_m;
+	void *img_o;
+	void *img_v;
+	void *img_e;
+	void *img_s;
+	void *img_points;
 } t_images;
 
 typedef struct s_player {
