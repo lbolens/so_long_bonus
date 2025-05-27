@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:32:27 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 13:42:42 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:55:26 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void	destroy_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->window);
 	if (game->mlx)
 	{
-		// Linux
 		mlx_destroy_display(game->mlx);
 		free(game->mlx);
 	}

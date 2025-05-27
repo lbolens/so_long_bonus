@@ -6,11 +6,12 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:49 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/15 16:57:43 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/27 15:34:15 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 int	ft_strlen_str(const char *s)
 {
 	int	i;

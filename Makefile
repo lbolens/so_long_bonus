@@ -6,7 +6,7 @@
 #    By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 12:28:32 by lbolens           #+#    #+#              #
-#    Updated: 2025/05/27 14:28:53 by lbolens          ###   ########.fr        #
+#    Updated: 2025/05/27 16:52:10 by lbolens          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,11 @@ SRC = game.c \
 	  init_asteroids.c \
 	  manage_tens.c \
 	  manage_units.c \
-	  manage_hundreds.c 
+	  manage_hundreds.c \
+	  utils_bis.c \
+	  utils_ter.c \
+	  utils_quater.c \
+	  utils_quinter.c
 
 OBJ := $(SRC:%.c=%.o)
 
