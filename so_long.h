@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 16:53:41 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/28 11:56:47 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # ifndef TILE_SIZE
 #  define TILE_SIZE 128
 # endif
+
+# define MAX_LINES 1000
+# define MAX_WIDTH 3840
+# define MAX_HEIGHT 2160
 
 /* Sur Linux*/
 # define KEY_W 119
@@ -120,6 +124,7 @@ typedef struct s_game
 {
 	void				*mlx;
 	void				*window;
+	unsigned int		seed;
 	t_images			images;
 	t_map				map;
 	t_player			player;
@@ -145,7 +150,7 @@ int						check_synthax(char **map, int nbr_p, int nbr_c,
 							int nbr_e);
 int						is_walls(char **map, int i, int nbr_lines,
 							int nbr_columns);
-char					**is_map_valid(char *filepath, int fd, int i);
+char					**is_map_valid(char *filepath);
 
 /*--------DOING_IT--------*/
 void					init_game(t_game *game, char **map);
@@ -171,7 +176,7 @@ size_t					ft_strlen_2(const char *str);
 int						game_loop(t_game *game);
 void					render_asteroids(t_game *game);
 void					init_seed_from_map(t_game *game);
-int						my_rand_mod(int mod);
+int						my_rand_mod(t_game *game, int mod);
 void					update_asteroids(t_game *game, t_asteroid *curr,
 							t_asteroid *prev);
 void					init_asteroid(t_game *game);
@@ -199,5 +204,12 @@ void					init_digit_images_bis(t_game *game);
 int						check_all_collectibles(char **map);
 int						check_exit(char **map);
 int						count_collectibles(char **map);
+int validate_size(char **map);
+int validate_content(char **map, int p, int e, int c);
+char	**allocate_map_memory(int nbr_lines);
+char	*duplicate_line(char *line);
+void	free_partial_map(char **map, int up_to_index);
+char	**map_duplicate(char **map, int i, int nbr_lines);
+void	flood_fill(char **map, int x, int y, int map_height);
 
 #endif

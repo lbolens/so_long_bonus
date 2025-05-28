@@ -6,24 +6,23 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:08:57 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 16:47:32 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/28 11:04:45 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "so_long.h"
 
-static unsigned int	seed;
-
 void	init_seed_from_map(t_game *game)
 {
-	seed = game->map.map[0][0] * 31 + game->player.x * 17 + game->player.y * 13;
+	game->seed = game->map.map[0][0] * 31 + game->player.x * 7 + game->player.y
+		* 9;
 }
 
-int	my_rand_mod(int mod)
+int	my_rand_mod(t_game *game, int mod)
 {
-	seed = seed * 1103515245 + 12345;
-	return ((seed / 65536) % mod);
+	game->seed = game->seed * 1103515245 + 12345;
+	return ((game->seed / 65536) % mod);
 }
 
 void	render_map(t_game *game, int i, int j)

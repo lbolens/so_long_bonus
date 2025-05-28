@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:02:54 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 16:33:10 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/28 11:34:21 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	reduce_main_bis(char **argv)
 	game->window = NULL;
 	game->asteroid = NULL;
 	game->map.map = NULL;
-	game->map.map = is_map_valid(argv[1], 0, 0);
+	game->map.map = is_map_valid(argv[1]);
 	if (!game->map.map)
 	{
 		printf("Error: invalid map\n");
