@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 16:53:41 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/30 12:00:32 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ typedef struct s_game
 {
 	void				*mlx;
 	void				*window;
+	unsigned int		seed;
 	t_images			images;
 	t_map				map;
 	t_player			player;
@@ -171,7 +172,7 @@ size_t					ft_strlen_2(const char *str);
 int						game_loop(t_game *game);
 void					render_asteroids(t_game *game);
 void					init_seed_from_map(t_game *game);
-int						my_rand_mod(int mod);
+int						my_rand_mod(t_game *game, int mod);
 void					update_asteroids(t_game *game, t_asteroid *curr,
 							t_asteroid *prev);
 void					init_asteroid(t_game *game);
@@ -199,5 +200,14 @@ void					init_digit_images_bis(t_game *game);
 int						check_all_collectibles(char **map);
 int						check_exit(char **map);
 int						count_collectibles(char **map);
+
+char *duplicate_line(char *line);
+void free_partial_map(char **map, int up_to_index);
+char **map_duplicate(char **map, int i, int nbr_lines);
+int is_boundary_or_obstacle(char **map, int x, int y, int map_height);
+int is_valid_cell(char c);
+
+void flood_fill(char **map, int x, int y, int map_height);
+void flood_fill_no_exit(char **map, int x, int y, int map_height);
 
 #endif

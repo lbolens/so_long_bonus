@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:47:26 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 16:47:05 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/30 11:40:55 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	init_asteroid(t_game *game)
 	a = malloc(sizeof(t_asteroid));
 	if (!a)
 		return ;
-	dy = my_rand_mod(3) - 1;
+	dy = my_rand_mod(game, 3) - 1;
 	y = game->player.y + dy;
 	if (y < 1 || y >= game->map.map_height - 1)
 		y = game->player.y;
