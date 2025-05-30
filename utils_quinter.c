@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:50:24 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/28 11:56:03 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/28 12:29:31 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,5 @@ int	validate_content(char **map, int p, int e, int c)
 		}
 		i++;
 	}
-	return (p == 1 && e >= 1 && c >= 1);
+	return (p == 1 && e == 1 && c >= 1);
 }

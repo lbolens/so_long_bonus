@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:08:57 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/28 11:04:45 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/28 14:21:51 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,24 @@ void	init_digit_images_bis(t_game *game)
 			&w, &h);
 	game->images.img_9 = mlx_xpm_file_to_image(game->mlx, "textures/img_9.xpm",
 			&w, &h);
+}
+
+void	check_images(t_game *game)
+{
+	if (!game->images.img_0 || !game->images.img_1 || !game->images.img_1x1
+		|| !game->images.img_2 || !game->images.img_3 || !game->images.img_4
+		|| !game->images.img_5 || !game->images.img_6 || !game->images.img_7
+		|| !game->images.img_8 || !game->images.img_9
+		|| !game->images.img_asteroid || !game->images.img_collectible
+		|| !game->images.img_e || !game->images.img_exit
+		|| !game->images.img_floor || !game->images.img_m || !game->images.img_o
+		|| !game->images.img_player_down || !game->images.img_player_left
+		|| !game->images.img_player_right || !game->images.img_player_up
+		|| !game->images.img_points || !game->images.img_s
+		|| !game->images.img_v || !game->images.img_wall)
+	{
+		printf("Error\nFailed to load an image\n");
+		destroy_game(game);
+		exit(1);
+	}
 }

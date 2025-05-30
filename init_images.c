@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 11:28:48 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/27 16:22:18 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/28 14:13:08 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,4 +118,5 @@ void	init_images(t_game *game)
 	init_moves_images(game);
 	init_digits_images(game);
 	init_digit_images_bis(game);
+	check_images(game);
 }

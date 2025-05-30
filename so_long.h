@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/28 11:56:47 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/30 11:06:43 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,14 +143,14 @@ t_nod					*ft_create_new_stash(char *content, int index);
 t_nod					*add_to_stash(t_nod *stash, char *buffer);
 
 /*--------PARSING--------*/
-int						is_map_solvable(char **map, int player_x, int player_y,
-							int map_height);
+int is_map_solvable(char** map, int player_x, int player_y, int map_height);
+
 int						is_rectangle(char **map);
 int						check_synthax(char **map, int nbr_p, int nbr_c,
 							int nbr_e);
 int						is_walls(char **map, int i, int nbr_lines,
 							int nbr_columns);
-char					**is_map_valid(char *filepath);
+char** is_map_valid(char *filepath, int fd, int i);
 
 /*--------DOING_IT--------*/
 void					init_game(t_game *game, char **map);
@@ -203,13 +203,8 @@ int						ft_size(int num);
 void					init_digit_images_bis(t_game *game);
 int						check_all_collectibles(char **map);
 int						check_exit(char **map);
-int						count_collectibles(char **map);
-int validate_size(char **map);
-int validate_content(char **map, int p, int e, int c);
-char	**allocate_map_memory(int nbr_lines);
-char	*duplicate_line(char *line);
-void	free_partial_map(char **map, int up_to_index);
-char	**map_duplicate(char **map, int i, int nbr_lines);
-void	flood_fill(char **map, int x, int y, int map_height);
+int						count_collectibles(char **map);int validate_size(char **map);
+void	check_images(t_game *game);
+
 
 #endif

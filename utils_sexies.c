@@ -6,7 +6,7 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 11:49:18 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/28 11:53:48 by lbolens          ###   ########.fr       */
+/*   Updated: 2025/05/28 16:59:22 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,15 @@ char	**map_duplicate(char **map, int i, int nbr_lines)
 
 void	flood_fill(char **map, int x, int y, int map_height)
 {
+	//if (map[y][x] == 'E')
+		//map[y][x] = '1';
 	if (x < 0 || y < 0 || y >= map_height || !map[y] || !map[y][x])
 		return ;
 	if (map[y][x] == '1' || map[y][x] == 'X' || map[y][x] == 'V')
 		return ;
-	if (map[y][x] == '0' || map[y][x] == 'C' || map[y][x] == 'E'
-		|| map[y][x] == 'P')
+	if (map[y][x] == '0' || map[y][x] == 'C' || map[y][x] == 'P')
 		map[y][x] = 'V';
+	
 	flood_fill(map, x + 1, y, map_height);
 	flood_fill(map, x - 1, y, map_height);
 	flood_fill(map, x, y + 1, map_height);
