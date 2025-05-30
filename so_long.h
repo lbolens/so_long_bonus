@@ -6,7 +6,11 @@
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 16:49:58 by lbolens           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2025/05/30 11:06:43 by lbolens          ###   ########.fr       */
+=======
+/*   Updated: 2025/05/30 12:00:32 by lbolens          ###   ########.fr       */
+>>>>>>> reduce_functions
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,5 +210,14 @@ int						check_exit(char **map);
 int						count_collectibles(char **map);int validate_size(char **map);
 void	check_images(t_game *game);
 
+
+char *duplicate_line(char *line);
+void free_partial_map(char **map, int up_to_index);
+char **map_duplicate(char **map, int i, int nbr_lines);
+int is_boundary_or_obstacle(char **map, int x, int y, int map_height);
+int is_valid_cell(char c);
+
+void flood_fill(char **map, int x, int y, int map_height);
+void flood_fill_no_exit(char **map, int x, int y, int map_height);
 
 #endif

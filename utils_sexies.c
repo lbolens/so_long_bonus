@@ -5,33 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 11:49:18 by lbolens           #+#    #+#             */
-/*   Updated: 2025/05/28 16:59:22 by lbolens          ###   ########.fr       */
+/*   Created: 2025/05/30 11:55:22 by lbolens           #+#    #+#             */
+/*   Updated: 2025/05/30 12:23:50 by lbolens          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "so_long.h"
 
-char	**allocate_map_memory(int nbr_lines)
-{
-	char	**map_duplicate;
-
-	map_duplicate = (char **)malloc((nbr_lines + 1) * sizeof(char *));
-	return (map_duplicate);
-}
-
 char	*duplicate_line(char *line)
 {
-	char	*new_line;
 	int		len;
+	char	*new_line;
 	int		j;
 
 	len = number_columns(line);
 	new_line = malloc((len + 1) * sizeof(char));
+	j = 0;
 	if (!new_line)
 		return (NULL);
-	j = 0;
 	while (j < len)
 	{
 		new_line[j] = line[j];
@@ -52,7 +44,7 @@ char	**map_duplicate(char **map, int i, int nbr_lines)
 {
 	char	**map_duplicate;
 
-	map_duplicate = allocate_map_memory(nbr_lines);
+	map_duplicate = (char **)malloc((nbr_lines + 1) * sizeof(char *));
 	if (!map_duplicate)
 		return (NULL);
 	while (map[i])
@@ -69,19 +61,16 @@ char	**map_duplicate(char **map, int i, int nbr_lines)
 	return (map_duplicate);
 }
 
-void	flood_fill(char **map, int x, int y, int map_height)
+int	is_boundary_or_obstacle(char **map, int x, int y, int map_height)
 {
-	//if (map[y][x] == 'E')
-		//map[y][x] = '1';
 	if (x < 0 || y < 0 || y >= map_height || !map[y] || !map[y][x])
-		return ;
+		return (1);
 	if (map[y][x] == '1' || map[y][x] == 'X' || map[y][x] == 'V')
-		return ;
-	if (map[y][x] == '0' || map[y][x] == 'C' || map[y][x] == 'P')
-		map[y][x] = 'V';
-	
-	flood_fill(map, x + 1, y, map_height);
-	flood_fill(map, x - 1, y, map_height);
-	flood_fill(map, x, y + 1, map_height);
-	flood_fill(map, x, y - 1, map_height);
+		return (1);
+	return (0);
+}
+
+int	is_valid_cell(char c)
+{
+	return (c == '0' || c == 'C' || c == 'E' || c == 'P');
 }

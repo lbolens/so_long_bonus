@@ -6,7 +6,7 @@
 #    By: lbolens <lbolens@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 12:28:32 by lbolens           #+#    #+#              #
-#    Updated: 2025/05/28 11:52:39 by lbolens          ###   ########.fr        #
+#    Updated: 2025/05/30 12:23:23 by lbolens          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = game.c \
 	  utils_ter.c \
 	  utils_quater.c \
 	  utils_quinter.c \
+	  flood_fill.c \
 	  utils_sexies.c
 
 OBJ := $(SRC:%.c=%.o)
